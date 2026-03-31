@@ -82,6 +82,16 @@ const techData = {
         { category: "Delik İşlemleri",                folderUrl: driveFolder("1A5vQm4K5tIg7Zf1L8-QKbIivLWxeSBXx") },
         { category: "iMachining / Vortex / Adaptive", folderUrl: driveFolder("1RnkpJaiRNLLl6m1M-yZzqHTp4dhrceUP") },
         { category: "Torna",                          folderUrl: driveFolder("1eQCyq30xZCuzoaz3TzmC2fb4yqLSFWy-") }
+    ],
+    postProcessor: [
+        { category: "Post Processor Genel",   folderUrl: driveFolder("1OjnumF7X0_CQtqHnsBNo6RHGfuYgvyl3") },
+        { category: "Mitsubishi M80",         folderUrl: driveFolder("1hZlibPKYOydSYK3cFmS4Vt3ZP3vMYUG_") },
+        { category: "Mitsubishi Meldas M65",  folderUrl: driveFolder("1rJL1TAGoIfd7OIYRlwO-3RfogYNWm3UP") },
+        { category: "Mitsubishi (Genel)",     folderUrl: driveFolder("1JzTGhaBuML2yKge6OjXWghcvNRnU__lF") },
+        { category: "POST",                   folderUrl: driveFolder("1CzCzFI85KWzbUfH8ee2p_UeXmSjM_0LM") },
+        { category: "Postlar",                folderUrl: driveFolder("1pVwLvmGP4LRaCP5W0il7obGim1VorkL7") },
+        { category: "Posts",                  folderUrl: driveFolder("13YBoGu3Uzo-sOVuz7tzVSlkJC2_hxpar") },
+        { category: "SolidCAM Post",          folderUrl: driveFolder("10L1RrFGRLtG8rrUNzC2oGzOXIKqEMR5j") }
     ]
 };
 
@@ -161,6 +171,21 @@ function renderLibrary() {
     const solidcamEgitimContainer = document.getElementById('solidcamEgitimFiles');
     if (solidcamEgitimContainer) {
         solidcamEgitimContainer.innerHTML = techData.solidcamEgitim.map(cat => `
+            <div class="lib-file-item">
+                <div class="file-info">
+                    <i class="ph-duotone ph-folder-open"></i>
+                    <span class="file-name">${cat.category}</span>
+                </div>
+                <a href="${cat.folderUrl}" target="_blank" class="dl-btn" title="Drive'da Aç">
+                    <i class="ph-bold ph-arrow-square-out"></i>
+                </a>
+            </div>
+        `).join('');
+    }
+
+    const postContainer = document.getElementById('postProcessorFiles');
+    if (postContainer) {
+        postContainer.innerHTML = techData.postProcessor.map(cat => `
             <div class="lib-file-item">
                 <div class="file-info">
                     <i class="ph-duotone ph-folder-open"></i>
