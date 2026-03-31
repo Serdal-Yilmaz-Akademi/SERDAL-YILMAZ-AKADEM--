@@ -1,50 +1,60 @@
 /**
  * tech-archive.js
  * CNC Teknik Kütüphane Listesi ve Gelişmiş Interaktif Hesaplayıcı
+ * Dosyalar Google Drive üzerinden servis edilmektedir.
  */
+
+// Google Drive doğrudan indirme linki oluşturucu
+function driveDownload(id) {
+    return `https://drive.google.com/uc?export=download&id=${id}`;
+}
+// Google Drive klasör linki
+function driveFolder(id) {
+    return `https://drive.google.com/drive/folders/${id}`;
+}
 
 const techData = {
     catalogs: [
-        { name: "Akko Ürün Kataloğu", file: "Akko ürün katalog.pdf" },
-        { name: "Korloy Kesici Takım", file: "korloy kesici takım.pdf" },
-        { name: "Kesici Uç Kataloğu", file: "Kesici uç katalog.pdf" },
-        { name: "Sandvik CoroKey 2010", file: "CoroKey_2010 katalog.pdf" },
-        { name: "BT Tutucular (Holders)", file: "BT-holders.pdf" },
-        { name: "Saplı Tarama Freze (XNKT)", file: "Saplı Tarama Freze-XNKT.pdf" },
-        { name: "Genel Takımlar Kataloğu", file: "Takımlar Katalog.pdf" }
+        { name: "Akko Ürün Kataloğu",        url: driveDownload("1PbI8lLh2Kt-3SlnBspMsfNZgNIbSSR86") },
+        { name: "Korloy Kesici Takım",         url: driveDownload("1D4dcEMGypxFQq38YSymHirGeVwWsXXFP") },
+        { name: "Kesici Uç Kataloğu",          url: driveDownload("1pUzZFx23MvZwHgSC00isyDjldFiKpYMH") },
+        { name: "Sandvik CoroKey 2010",        url: driveDownload("12J-BDc0c2YfgrOjU6F8BySfimd75jpCN") },
+        { name: "BT Tutucular (Holders)",      url: driveDownload("18_FEX14MdFvNsL6nNDwclrGGALJExcYK") },
+        { name: "Saplı Tarama Freze (XNKT)",   url: driveDownload("1Ecur8bL38W6iw-WuEphda51dgPyPPCrp") },
+        { name: "Genel Takımlar Kataloğu",     url: driveDownload("1BtIJyP-85GIZu31SxAGo_evPAhJ7FhbV") }
     ],
     education: [
-        { name: "CNC Torna Eğitimi Notları", file: "CNC_TORNA_Egitimi.pdf" },
-        { name: "CNC Freze Programlama Rehberi", file: "Cnc Frezede Programlama.pdf" },
-        { name: "CNC Bilgi Formu & Teknik Terimler", file: "cnc bilgi formu.pdf" },
-        { name: "HSR-HSM İşleme Stratejileri", file: "HSR-HSM.pdf" }
+        { name: "CNC Torna Eğitimi Notları",        url: driveDownload("1qpciBgrp7E8wMAoQl6rPGmoEm55Jb3KK") },
+        { name: "CNC Freze Programlama Rehberi",     url: driveDownload("1vQXpjKaF1c8G4lSv8M7AnDvzzZ0Fsc4C") },
+        { name: "CNC Bilgi Formu & Teknik Terimler", url: driveDownload("18ldIeMGsbi4KH2IGRmNwRtKsbKkztnao") },
+        { name: "HSR-HSM İşleme Stratejileri",       url: driveDownload("1Fb2ejB6sb7jmcx0wX5fJdXBjNNhfJBt5") }
     ],
     tables: [
-        { name: "Matkap Uçları Teknik Tablo", file: "MATKAP-UCLARI.pdf" },
-        { name: "Karbür Matkap Devir/İlerleme", file: "genel karbür matkap için devir ilerleme hesapları.pdf" },
-        { name: "Sertmetal Kullanım Rehberi", file: "sertmetal.pdf" }
+        { name: "Matkap Uçları Teknik Tablo",        url: driveDownload("153uLmGGlaLFXXsQ2wCLgiDsSbGIG7sZf") },
+        { name: "Karbür Matkap Devir/İlerleme",      url: driveDownload("1K46THkM6-VzcYSCNC6T18slUgHp-ov-e") },
+        { name: "Sertmetal Kullanım Rehberi",         url: driveDownload("1fV2PoSlxGeQA8hVD57hTeOF3x_Q3xWim") }
     ],
     catia: [
-        { category: "Analiz Eğitim Dosyaları", files: ["Bisiklet Analysis.pdf", "CATİA DS - Generative Assembly Structural Analysis.pdf", "Catia_-_Generative_Part_Stress_Analysis.pdf"], path: "catia eğitim dökümanları/Analiz eğitim dökümanları/" },
-        { category: "Açılış Ayarları", files: ["Açılış ayarları 1.pdf", "Açılış ayarları 2 (CATIA V5R21).pdf"], path: "catia eğitim dökümanları/Açılış ayarları/" },
-        { category: "Freestyle Modelleme", files: ["FreeStyle 1.pdf", "FreeStyle 2.pdf"], path: "catia eğitim dökümanları/Freestyle eğitim dökümanları/" },
-        { category: "Montaj Tasarımı (Assembly)", files: ["Assembly Design 1.pdf", "Assembly Design 2.pdf"], path: "catia eğitim dökümanları/Montaj eğitim dökümanları/" },
-        { category: "Teknik Resim (Drafting)", files: ["Drafting 1.pdf", "Drafting 2.pdf"], path: "catia eğitim dökümanları/Teknik resim eğitim dökümanları/" },
-        { category: "CATIA CAM Uygulamaları", files: ["Prismatic Machining 1.pdf", "Surface Machining 1.pdf"], path: "catia eğitim dökümanları/cam eğitim dökümanları/" },
-        { category: "Katı Model (Part Design)", files: ["Part Design 1.pdf", "Part Design 2.pdf"], path: "catia eğitim dökümanları/katı model eğitim dökümanları/" },
-        { category: "Yüzey Modelleme (GSD)", files: ["Generatif Shape Design 1.pdf", "Generatif Shape Design 2.pdf"], path: "catia eğitim dökümanları/yüzey modelleme eğitim dökümanları/" },
-        { category: "Infrastructure & Ayarlar", files: ["Infrastruce.PDF", "CATİA SOLUTIONS - Infrastructure.pdf"], path: "catia eğitim dökümanları/ınfrastruce eğitim dökümanları/" }
+        { category: "Analiz Eğitim Dosyaları",    folderUrl: driveFolder("1INg5bxfTk_T0kpAqtC04Vd-vXXB9smkT") },
+        { category: "Açılış Ayarları",            folderUrl: driveFolder("1_fGWsrXoVRASsdV0asifiQNsDU0oscR1") },
+        { category: "Freestyle Modelleme",        folderUrl: driveFolder("11xdj26_AlePJFe1KO-WppLWtUZHYxEs9") },
+        { category: "Montaj Tasarımı (Assembly)", folderUrl: driveFolder("17MKA8I2dsyz1Sxc4Nalj8rbrZv7n_3Xs") },
+        { category: "Teknik Resim (Drafting)",    folderUrl: driveFolder("1BLthF-k9RkqRqhOCdGRX0s14-1d3sGoj") },
+        { category: "CATIA CAM Uygulamaları",     folderUrl: driveFolder("1SF8OhkwzCrBBXYWfb2xO9R5vqpkq3ba1") },
+        { category: "Katı Model (Part Design)",   folderUrl: driveFolder("17P5e8ldHczGCfieigdDLKd5sJH2SGjDF") },
+        { category: "Yüzey Modelleme (GSD)",      folderUrl: driveFolder("18m4rvRVk_Dn0dHR974gg5Le0-FlFTLrg") },
+        { category: "Infrastructure & Ayarlar",   folderUrl: driveFolder("13tPqzF5G8bOp0J26JsxEfrQOznjERbkx") }
     ],
     nx: [
-        { 
-            category: "Eğitim Dökümanları", 
-            files: ["05 Korozyon.pptx", "11 Sac ParçaTasarımımı.pptx", "CATİA ve NX KULLANAN FİRMALAR.jpg", "NX 10 Yenilikler CAD.pdf", "siemens-nx-klavye-kisayollari.pdf", "Sketch Relations.pdf", "WEBINAR_SUNUM_1926_realize_shape.pdf"], 
-            path: "SİEMENS NX EĞİTİM DÖKÜMANLARI/" 
+        {
+            category: "Eğitim Dökümanları",
+            files: ["05 Korozyon.pptx", "11 Sac ParçaTasarımımı.pptx", "NX 10 Yenilikler CAD.pdf", "siemens-nx-klavye-kisayollari.pdf", "Sketch Relations.pdf"],
+            path: "SİEMENS NX EĞİTİM DÖKÜMANLARI/"
         },
-        { 
-            category: "Komut Uygulamaları (.prt)", 
-            files: ["501_drf_drawing_4.prt", "502_drf_drawing_3.prt", "503_drf_drawing_6.prt", "504_drf_section_1.prt", "505_drf_section_2.prt", "506_drf_section_4.prt", "507_drf_section_5.prt", "508_drf_section_6.prt", "509_drf_broken_2.prt", "Direct1.prt", "Direct2.prt", "Direct3.prt", "Direct_Modeling.prt", "Global_Shaping_1.prt", "Global_Shaping_2.prt", "Global_Shaping_3.prt", "Global_Shaping_4.prt", "global_shaping_5.prt", "global_shaping_6.prt", "global_shaping_7.prt", "head_11-3.prt", "model1.prt", "N_Sided_1.prt", "Parameter-Arclength_Ornek.prt", "patch_openings_1.prt", "Spline1.prt", "Spline_2.prt", "Spline_Kanca_.prt", "Spline_Planes.prt", "swept_4.prt", "synchronous_modeling_1.prt", "synchronous_modeling_2.prt", "synchronous_modeling_2_hg.prt", "synchronous_modeling_3.prt", "synchronous_modeling_4.prt", "synchronous_modeling_5.prt", "synchronous_modeling_6.prt", "synchronous_modeling_7.prt", "synchronous_modeling_8.prt", "synchronous_modeling_9.prt", "Transition.prt", "Trim_Extend_1.prt", "Trim_Extend_2.prt", "Trim_Extend_3.prt", "true_shading.prt", "Yuzey_Modelleme(Araba).prt"], 
-            path: "SİEMENS NX KOMUTLAR İÇİN UYGULAMALAR/" 
+        {
+            category: "Komut Uygulamaları (.prt)",
+            files: ["Direct1.prt", "Direct2.prt", "Direct3.prt", "Direct_Modeling.prt", "Global_Shaping_1.prt", "synchronous_modeling_1.prt", "synchronous_modeling_2.prt"],
+            path: "SİEMENS NX KOMUTLAR İÇİN UYGULAMALAR/"
         }
     ]
 };
@@ -64,7 +74,7 @@ let currentCalcType = 'drill';
 document.addEventListener('DOMContentLoaded', () => {
     renderLibrary();
     initCalculatorControls();
-    updateResults(); // İlk hesaplama
+    updateResults();
 });
 
 function renderLibrary() {
@@ -73,89 +83,64 @@ function renderLibrary() {
     const catiaContainer = document.getElementById('catiaFiles');
 
     if (catalogContainer) {
-        catalogContainer.innerHTML = techData.catalogs.map(item => createFileItem(item, 'cnc takım verileri/')).join('');
+        catalogContainer.innerHTML = techData.catalogs.map(item => createFileItem(item)).join('');
     }
     if (eduContainer) {
-        eduContainer.innerHTML = techData.education.concat(techData.tables).map(item => createFileItem(item, 'cnc takım verileri/')).join('');
+        eduContainer.innerHTML = techData.education.concat(techData.tables).map(item => createFileItem(item)).join('');
     }
     if (catiaContainer) {
         catiaContainer.innerHTML = techData.catia.map(cat => `
             <div class="lib-subcategory">
                 <h5 class="subcategory-title">${cat.category}</h5>
                 <div class="lib-files">
-                    ${cat.files.map(file => createFileItem({ name: file, file: file }, cat.path)).join('')}
-                </div>
-            </div>
-        `).join('');
-    }
-    const nxContainer = document.getElementById('nxFiles');
-    if (nxContainer) {
-        nxContainer.innerHTML = techData.nx.map(cat => `
-            <div class="lib-subcategory">
-                <h5 class="subcategory-title">${cat.category}</h5>
-                <div class="lib-files">
-                    ${cat.files.map(file => {
-                        const iconClass = file.endsWith('.prt') ? 'ph-duotone ph-cube' : 'ph-duotone ph-file-pdf';
-                        return `
-                            <div class="lib-file-item">
-                                <div class="file-info">
-                                    <i class="${iconClass}"></i>
-                                    <span class="file-name">${file}</span>
-                                </div>
-                                <a href="${cat.path}${file}" target="_blank" class="dl-btn" title="Görüntüle/İndir">
-                                    <i class="ph-bold ph-arrow-square-out"></i>
-                                </a>
-                            </div>
-                        `;
-                    }).join('')}
+                    <div class="lib-file-item">
+                        <div class="file-info">
+                            <i class="ph-duotone ph-folder-open"></i>
+                            <span class="file-name">${cat.category} — Tüm Dosyalar</span>
+                        </div>
+                        <a href="${cat.folderUrl}" target="_blank" class="dl-btn" title="Drive'da Aç">
+                            <i class="ph-bold ph-arrow-square-out"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         `).join('');
     }
 }
 
-function createFileItem(item, basePath) {
-    const path = `${basePath}${item.file}`;
+function createFileItem(item) {
     return `
         <div class="lib-file-item">
             <div class="file-info">
                 <i class="ph-duotone ph-file-pdf"></i>
                 <span class="file-name">${item.name}</span>
             </div>
-            <a href="${path}" target="_blank" class="dl-btn" title="Görüntüle/İndir">
-                <i class="ph-bold ph-arrow-square-out"></i>
+            <a href="${item.url}" target="_blank" class="dl-btn" title="İndir" download>
+                <i class="ph-bold ph-download-simple"></i>
             </a>
         </div>
     `;
 }
 
 function initCalculatorControls() {
-    // Sekme Değiştirme
     const tabs = document.querySelectorAll('.calc-tab');
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            
+
             currentCalcType = tab.dataset.type;
             document.getElementById('drillInputs').style.display = currentCalcType === 'drill' ? 'block' : 'none';
             document.getElementById('millInputs').style.display = currentCalcType === 'mill' ? 'block' : 'none';
-            
+
             updateResults();
         });
     });
 
-    // İnput Değişimlerini İzle
-    const inputs = [
-        'materialSelect', 'diameterSelect', 
-        'millDiameter', 'millZ', 'millFz', 'millVc'
-    ];
-
+    const inputs = ['materialSelect', 'diameterSelect', 'millDiameter', 'millZ', 'millFz', 'millVc'];
     inputs.forEach(id => {
         const el = document.getElementById(id);
-        if (el) {
-            el.addEventListener('input', updateResults);
-        }
+        if (el) el.addEventListener('input', updateResults);
     });
 }
 
@@ -181,7 +166,6 @@ function updateResults() {
         vf = Math.round(n * fz * z);
     }
 
-    // Arayüzü Güncelle
     const vcEl = document.getElementById('vcResult');
     const nEl = document.getElementById('nResult');
     const vfEl = document.getElementById('vfResult');
@@ -190,10 +174,9 @@ function updateResults() {
     nEl.textContent = n;
     vfEl.textContent = vf;
 
-    // Animasyon Ekle
     [vcEl, nEl, vfEl].forEach(el => {
         el.classList.remove('result-glow');
-        void el.offsetWidth; // Reflow trigger
+        void el.offsetWidth;
         el.classList.add('result-glow');
     });
 }
