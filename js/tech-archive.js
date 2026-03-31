@@ -53,7 +53,10 @@ const techData = {
         { name: "Sketch Relations",                   url: driveDownload("1TMQG5WXhiTKHfnSMo04TUHyfTWWOJnZB") },
         { name: "Realize Shape Webinar Sunumu",       url: driveDownload("179BpdGfVm2QaTDgCqfMX_4EtBX0FE7ci") },
         { name: "CATIA ve NX Kullanan Firmalar",      url: driveDownload("1b7gtefyGqJjcEHkLJGEvKovhOBhQgm7V") }
-    ]
+    ],
+    nxPrt: {
+        folderUrl: driveFolder("1GMzVSr9j5yVDoEnZ8bEsCu-zxVsqmCkV")
+    }
 };
 
 // Matkap Verileri
@@ -106,7 +109,22 @@ function renderLibrary() {
 
     const nxContainer = document.getElementById('nxFiles');
     if (nxContainer) {
-        nxContainer.innerHTML = techData.nx.map(item => createFileItem(item)).join('');
+        nxContainer.innerHTML = techData.nx.map(item => createFileItem(item)).join('') + `
+            <div class="lib-subcategory" style="margin-top:1rem;">
+                <h5 class="subcategory-title">Komut Uygulamaları (.prt Dosyaları)</h5>
+                <div class="lib-files">
+                    <div class="lib-file-item">
+                        <div class="file-info">
+                            <i class="ph-duotone ph-folder-open"></i>
+                            <span class="file-name">Tüm NX Komut Uygulama Dosyaları</span>
+                        </div>
+                        <a href="${techData.nxPrt.folderUrl}" target="_blank" class="dl-btn" title="Drive'da Aç">
+                            <i class="ph-bold ph-arrow-square-out"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 }
 
