@@ -46,16 +46,13 @@ const techData = {
         { category: "Infrastructure & Ayarlar",   folderUrl: driveFolder("13tPqzF5G8bOp0J26JsxEfrQOznjERbkx") }
     ],
     nx: [
-        {
-            category: "Eğitim Dökümanları",
-            files: ["05 Korozyon.pptx", "11 Sac ParçaTasarımımı.pptx", "NX 10 Yenilikler CAD.pdf", "siemens-nx-klavye-kisayollari.pdf", "Sketch Relations.pdf"],
-            path: "SİEMENS NX EĞİTİM DÖKÜMANLARI/"
-        },
-        {
-            category: "Komut Uygulamaları (.prt)",
-            files: ["Direct1.prt", "Direct2.prt", "Direct3.prt", "Direct_Modeling.prt", "Global_Shaping_1.prt", "synchronous_modeling_1.prt", "synchronous_modeling_2.prt"],
-            path: "SİEMENS NX KOMUTLAR İÇİN UYGULAMALAR/"
-        }
+        { name: "05 Korozyon",                       url: driveDownload("1gD3h6HCpekvLOKzwLTIqaDueyXKL9q6V") },
+        { name: "11 Sac Parça Tasarımı",              url: driveDownload("1yzraYFN7Dwt8L5YhaZP6VLEfwlmP7CzX") },
+        { name: "NX 10 Yenilikler CAD",               url: driveDownload("1BXSFDhLndEZIP_GUitgntZWPkpmfhJwr") },
+        { name: "Siemens NX Klavye Kısayolları",      url: driveDownload("1ROQDAWbBfWvtqHrMBYkirt2UbRZy1Nat") },
+        { name: "Sketch Relations",                   url: driveDownload("1TMQG5WXhiTKHfnSMo04TUHyfTWWOJnZB") },
+        { name: "Realize Shape Webinar Sunumu",       url: driveDownload("179BpdGfVm2QaTDgCqfMX_4EtBX0FE7ci") },
+        { name: "CATIA ve NX Kullanan Firmalar",      url: driveDownload("1b7gtefyGqJjcEHkLJGEvKovhOBhQgm7V") }
     ]
 };
 
@@ -105,6 +102,11 @@ function renderLibrary() {
                 </div>
             </div>
         `).join('');
+    }
+
+    const nxContainer = document.getElementById('nxFiles');
+    if (nxContainer) {
+        nxContainer.innerHTML = techData.nx.map(item => createFileItem(item)).join('');
     }
 }
 
