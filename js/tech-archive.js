@@ -56,7 +56,22 @@ const techData = {
     ],
     nxPrt: {
         folderUrl: driveFolder("1GMzVSr9j5yVDoEnZ8bEsCu-zxVsqmCkV")
-    }
+    },
+    solidcam: [
+        { name: "Program Kodları",                        url: driveDownload("1NXkZqoY8-6eJ_njndxhLlV7oFTF8CTW0") },
+        { name: "CNC Freze Tezgahları",                   url: driveDownload("1GkJc8McRovAJMEkFNagLdJyNgtN4FOew") },
+        { name: "CNC Freze Programlama Örnekleri",        url: driveDownload("15Ju4LENEWvBguMcTdquzWQAp2G32DNe0") },
+        { name: "Devir ve İlerleme Hesabı",               url: driveDownload("18MJhRUVocRaccFw-kwT1TXx9KRju7mRD") },
+        { name: "CNC Freze Örnek 01",                     url: driveDownload("1A9gPqf8Q-Vzy11Fzx29Tq5Yzzv_DfuCR") },
+        { name: "CNC Frezede Programlama",                url: driveDownload("18wg_p2p0lL95Zs0f3p6E845KIKKU0FGj") },
+        { name: "CNC Tornalama Çevrimleri",               url: driveDownload("1c3FxFM4rDrtYtKFjiOwoED5b8wdw-8uf") },
+        { name: "CNC İşleme Merkezi",                     url: driveDownload("1rhVl8L7WIed9eZ0kdymdXb53ylAkwIcy") },
+        { name: "CNC Torna/Freze G-M Kodları",            url: driveDownload("1IUvb-NE7xCbowjYFTtm9g60GVLlYDqGU") },
+        { name: "SolidCAM 2020 Yenilikleri (TR)",         url: driveDownload("1hwzYXNzO1eBbAAuIu_c5Y2JwKezMdsaC") },
+        { name: "SolidCAM 2020 Modules Overview",         url: driveDownload("1aBR2Z_2uXcFPCCSYh0VuNCSzPVaEtssb") },
+        { name: "SolidCAM 2020 What's New",               url: driveDownload("1jZbVW6lt9vzEZCHhah7WZOZkDrIt07rB") },
+        { name: "SolidCAM Ürün Broşürü",                  url: driveDownload("1gLVPzZhZtFFJopgj-jnr2JODYUQnQJGk") }
+    ]
 };
 
 // Matkap Verileri
@@ -125,6 +140,11 @@ function renderLibrary() {
                 </div>
             </div>
         `;
+    }
+
+    const solidcamContainer = document.getElementById('solidcamFiles');
+    if (solidcamContainer) {
+        solidcamContainer.innerHTML = techData.solidcam.map(item => createFileItem(item)).join('');
     }
 }
 
