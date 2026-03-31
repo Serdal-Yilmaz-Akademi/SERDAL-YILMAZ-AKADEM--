@@ -71,6 +71,17 @@ const techData = {
         { name: "SolidCAM 2020 Modules Overview",         url: driveDownload("1aBR2Z_2uXcFPCCSYh0VuNCSzPVaEtssb") },
         { name: "SolidCAM 2020 What's New",               url: driveDownload("1jZbVW6lt9vzEZCHhah7WZOZkDrIt07rB") },
         { name: "SolidCAM Ürün Broşürü",                  url: driveDownload("1gLVPzZhZtFFJopgj-jnr2JODYUQnQJGk") }
+    ],
+    solidcamEgitim: [
+        { category: "Eksen Tanıtım",                  folderUrl: driveFolder("1mM268FjxcD7qiwpyq3QlSGfbCNqu2yyK") },
+        { category: "Kaba İşleme",                    folderUrl: driveFolder("1exIXcdgz8440HEg4NIAF09wTiIHUa4zW") },
+        { category: "Ara Kaba İşleme",                folderUrl: driveFolder("1OVoLVgR4hrF0wIGCbBDRB-HbWvCyFkeo") },
+        { category: "Finiş İşleme",                   folderUrl: driveFolder("1zd1uvn5YyeEkZyB6dfKXAljjl9Ei6XW-") },
+        { category: "4 Eksen",                        folderUrl: driveFolder("1hL9HW-rf1k3dxZG-USRbFaSu1WjR79mh") },
+        { category: "5 Eksen",                        folderUrl: driveFolder("1_foYXHD9saVqTxfSSzGvgNML-pBvGq2A") },
+        { category: "Delik İşlemleri",                folderUrl: driveFolder("1A5vQm4K5tIg7Zf1L8-QKbIivLWxeSBXx") },
+        { category: "iMachining / Vortex / Adaptive", folderUrl: driveFolder("1RnkpJaiRNLLl6m1M-yZzqHTp4dhrceUP") },
+        { category: "Torna",                          folderUrl: driveFolder("1eQCyq30xZCuzoaz3TzmC2fb4yqLSFWy-") }
     ]
 };
 
@@ -145,6 +156,21 @@ function renderLibrary() {
     const solidcamContainer = document.getElementById('solidcamFiles');
     if (solidcamContainer) {
         solidcamContainer.innerHTML = techData.solidcam.map(item => createFileItem(item)).join('');
+    }
+
+    const solidcamEgitimContainer = document.getElementById('solidcamEgitimFiles');
+    if (solidcamEgitimContainer) {
+        solidcamEgitimContainer.innerHTML = techData.solidcamEgitim.map(cat => `
+            <div class="lib-file-item">
+                <div class="file-info">
+                    <i class="ph-duotone ph-folder-open"></i>
+                    <span class="file-name">${cat.category}</span>
+                </div>
+                <a href="${cat.folderUrl}" target="_blank" class="dl-btn" title="Drive'da Aç">
+                    <i class="ph-bold ph-arrow-square-out"></i>
+                </a>
+            </div>
+        `).join('');
     }
 }
 
